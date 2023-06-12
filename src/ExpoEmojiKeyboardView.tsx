@@ -1,11 +1,16 @@
-import { requireNativeViewManager } from 'expo-modules-core';
-import * as React from 'react';
+import { requireNativeViewManager } from "expo-modules-core";
+import * as React from "react";
+import { ViewProps } from "react-native";
 
-import { ExpoEmojiKeyboardViewProps } from './ExpoEmojiKeyboard.types';
+export type Props = {
+  value: string;
+  placeholder?: string;
+  onSelection: (event: { nativeEvent: { value: string } }) => void;
+} & ViewProps;
 
-const NativeView: React.ComponentType<ExpoEmojiKeyboardViewProps> =
-  requireNativeViewManager('ExpoEmojiKeyboard');
+const NativeView: React.ComponentType<Props> =
+  requireNativeViewManager("ExpoEmojiKeyboard");
 
-export default function ExpoEmojiKeyboardView(props: ExpoEmojiKeyboardViewProps) {
+export default function ExpoEmojiKeyboardView(props: Props) {
   return <NativeView {...props} />;
 }

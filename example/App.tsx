@@ -1,20 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
-
-import * as ExpoEmojiKeyboard from 'expo-emoji-keyboard';
+import { EmojiKeyboardView } from "expo-emoji-keyboard";
+import { useState } from "react";
+import { SafeAreaView, Text } from "react-native";
 
 export default function App() {
+  const [emoji, setEmoji] = useState("👋");
+
   return (
-    <View style={styles.container}>
-      <Text>{ExpoEmojiKeyboard.hello()}</Text>
-    </View>
+    <SafeAreaView
+      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+    >
+      <EmojiKeyboardView
+        value={emoji}
+        placeholder="E"
+        onSelection={(e) => setEmoji(e.nativeEvent.value)}
+        style={{ flex: 1 }}
+      />
+      <Text style={{ flex: 1 }}>The selected emoji is {emoji}</Text>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
