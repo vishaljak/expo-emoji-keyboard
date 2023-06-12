@@ -12,9 +12,23 @@ class ExpoEmojiKeyboardView: ExpoView {
         clipsToBounds = true
         addSubview(emojiKeyboardView)
         emojiKeyboardView.setEventDispatcher(onSelection)
+        
+        emojiKeyboardView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            emojiKeyboardView.topAnchor.constraint(equalTo: self.topAnchor),
+            emojiKeyboardView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            emojiKeyboardView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            emojiKeyboardView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return emojiKeyboardView.intrinsicContentSize
     }
     
     override func layoutSubviews() {
-        emojiKeyboardView.frame = bounds
+        super.layoutSubviews()
+//        emojiKeyboardView.frame = bounds
     }
 }
