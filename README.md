@@ -25,11 +25,8 @@ npm install expo-emoji-keyboard
 
 Run `npx pod-install` after installing the npm package.
 
-
 ### Configure for Android
-
-
 
 # Contributing
 
-Contributions are very welcome! Please refer to guidelines described in the [contributing guide]( https://github.com/expo/expo#contributing).
+Contributions are very welcome! Please refer to guidelines described in the [contributing guide](https://github.com/expo/expo#contributing).
