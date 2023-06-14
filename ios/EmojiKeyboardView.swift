@@ -92,12 +92,20 @@ class EmojiTextField: UITextField {
         if let text = sender.text, text.count > 1 {
             sender.text = String(text.suffix(1))
             emojiDelegate?.emojiTextField(self, didChange: sender.text ?? "")
-            self.endEditing(true) // dismiss keyboard right after selecting an emoji
             
             if let newPosition = sender.position(from: sender.endOfDocument, offset: 0) {
                         sender.selectedTextRange = sender.textRange(from: newPosition, to: newPosition)
                     }
         }
+        
+        self.endEditing(true)
+    }
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let newPosition = self.endOfDocument
+        self.selectedTextRange = self.textRange(from: newPosition, to: newPosition)
+    
     }
     
     override init(frame: CGRect) {
@@ -137,7 +145,6 @@ class EmojiTextField: UITextField {
     }
     
     func styleTextField() {
-        self.layer.borderWidth = 1.0
         self.layer.cornerRadius = self.frame.height / 2
         self.clipsToBounds = true
     }
