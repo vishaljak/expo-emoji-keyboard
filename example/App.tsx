@@ -18,10 +18,12 @@ const Card = ({ count }: { count: number }) => {
         <EmojiKeyboardView
           value={emoji}
           placeholder="t"
-          onSelection={(e) => console.log(e.nativeEvent.value)}
+          onSelection={(e) => setEmoji(e.nativeEvent.value)}
           style={{ width: 45, height: 45 }}
         />
-        <Text style={{ fontSize: 16 }}>Title {count}</Text>
+        <Text style={{ fontSize: 16 }}>
+          Title {count} {emoji}
+        </Text>
       </View>
     </View>
   );

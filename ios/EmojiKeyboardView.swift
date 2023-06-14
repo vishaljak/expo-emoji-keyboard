@@ -91,13 +91,13 @@ class EmojiTextField: UITextField {
     @objc private func editingChanged(sender: UITextField) {
         if let text = sender.text, text.count > 1 {
             sender.text = String(text.suffix(1))
-            emojiDelegate?.emojiTextField(self, didChange: sender.text ?? "")
             
             if let newPosition = sender.position(from: sender.endOfDocument, offset: 0) {
                         sender.selectedTextRange = sender.textRange(from: newPosition, to: newPosition)
                     }
         }
         
+        emojiDelegate?.emojiTextField(self, didChange: sender.text ?? "")
         self.endEditing(true)
     }
     
