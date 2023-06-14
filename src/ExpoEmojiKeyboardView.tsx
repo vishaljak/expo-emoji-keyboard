@@ -1,6 +1,6 @@
 import { requireNativeViewManager } from "expo-modules-core";
 import * as React from "react";
-import { ViewProps } from "react-native";
+import type { ViewProps } from "react-native";
 
 export type Props = {
   value: string;

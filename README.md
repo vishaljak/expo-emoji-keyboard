@@ -1,6 +1,6 @@
 # expo-emoji-keyboard
 
-Module to access emoji keyboard directly on iOS and android
+Module to access the emoji keyboard directly
 
 # API documentation
 

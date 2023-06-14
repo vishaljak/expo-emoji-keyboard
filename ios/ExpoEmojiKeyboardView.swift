@@ -16,10 +16,8 @@ class ExpoEmojiKeyboardView: ExpoView {
         emojiKeyboardView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            emojiKeyboardView.topAnchor.constraint(equalTo: self.topAnchor),
-            emojiKeyboardView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            emojiKeyboardView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            emojiKeyboardView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            emojiKeyboardView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            emojiKeyboardView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
     }
     
@@ -29,6 +27,5 @@ class ExpoEmojiKeyboardView: ExpoView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        emojiKeyboardView.frame = bounds
     }
 }

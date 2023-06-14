@@ -14,9 +14,9 @@ class EmojiKeyboardView: UIView, EmojiTextFieldDelegate {
     
     let textField: EmojiTextField = {
         let textField = EmojiTextField()
-        textField.borderStyle = .roundedRect
+        textField.contentVerticalAlignment = .center
         textField.textAlignment = .center
-        textField.backgroundColor = .systemGray2
+        textField.backgroundColor = .white
         return textField
     }()
     
@@ -39,12 +39,29 @@ class EmojiKeyboardView: UIView, EmojiTextFieldDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(textField)
+        
+        setupTextFieldConstraints(width: 40, height: 40)
+        
         self.textField.emojiDelegate = self
-        self.textField.frame = CGRect(x: 20, y: 100, width: 50, height: 40)
+    }
+    
+    func setupTextFieldConstraints(width: Int, height: Int) {
+        self.textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            textField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            textField.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            textField.widthAnchor.constraint(equalToConstant: CGFloat(width)),
+            textField.heightAnchor.constraint(equalToConstant: CGFloat(height))
+        ])
     }
     
     func emojiTextField(_ textField: EmojiTextField, didChange text: String) {
         onSelection?(["value": text])
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return textField.intrinsicContentSize
     }
     
     required init?(coder: NSCoder) {
@@ -75,11 +92,18 @@ class EmojiTextField: UITextField {
         if let text = sender.text, text.count > 1 {
             sender.text = String(text.suffix(1))
             emojiDelegate?.emojiTextField(self, didChange: sender.text ?? "")
+            self.endEditing(true) // dismiss keyboard right after selecting an emoji
+            
+            if let newPosition = sender.position(from: sender.endOfDocument, offset: 0) {
+                        sender.selectedTextRange = sender.textRange(from: newPosition, to: newPosition)
+                    }
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.tintColor = UIColor.clear
         
         commonInit()
     }
@@ -87,11 +111,19 @@ class EmojiTextField: UITextField {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
+        self.tintColor = UIColor.clear
+        
         commonInit()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        styleTextField()
     }
     
     func commonInit() {
         NotificationCenter.default.addObserver(self, selector: #selector(inputModeDidChange), name: UITextInputMode.currentInputModeDidChangeNotification, object: nil)
+        self.font = UIFont.systemFont(ofSize: 30)
     }
     
     @objc func inputModeDidChange(_ notification: Notification) {
@@ -102,6 +134,12 @@ class EmojiTextField: UITextField {
         DispatchQueue.main.async {
             [weak self] in self?.reloadInputViews()
         }
+    }
+    
+    func styleTextField() {
+        self.layer.borderWidth = 1.0
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
     }
 }
 
