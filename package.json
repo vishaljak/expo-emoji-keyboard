@@ -1,6 +1,6 @@
 {
   "name": "expo-emoji-keyboard",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Module to access the emoji keyboard directly",
   "main": "build/index.js",
   "types": "build/index.d.ts",
