@@ -27,6 +27,10 @@ class EmojiKeyboardView: UIView, EmojiTextFieldDelegate {
     func setValue(_ text: String) {
         self.textField.text = text
     }
+
+    func setTextSize(_ size: CGFloat) {
+        self.textField.font = UIFont.systemFont(ofSize: size)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true) // dismiss keyboard on touch outside the text field
@@ -96,9 +100,12 @@ class EmojiTextField: UITextField {
                         sender.selectedTextRange = sender.textRange(from: newPosition, to: newPosition)
                     }
         }
+
+        if let dismissKeyboard = sender.text, text.count > 0 {
+            self.endEditing(true)    
+        }
         
         emojiDelegate?.emojiTextField(self, didChange: sender.text ?? "")
-        self.endEditing(true)
     }
     
     

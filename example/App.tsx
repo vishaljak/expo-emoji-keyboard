@@ -18,6 +18,7 @@ const Card = ({ count }: { count: number }) => {
         <EmojiKeyboardView
           value={emoji}
           placeholder="t"
+          textSize={17}
           onSelection={(e) => setEmoji(e.nativeEvent.value)}
           style={{ width: 45, height: 45 }}
         />

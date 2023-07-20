@@ -5,6 +5,7 @@ import type { ViewProps } from "react-native";
 export type Props = {
   value: string;
   placeholder?: string;
+  textSize?: number;
   onSelection: (event: { nativeEvent: { value: string } }) => void;
 } & ViewProps;
 
