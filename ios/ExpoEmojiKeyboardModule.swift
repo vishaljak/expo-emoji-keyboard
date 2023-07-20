@@ -18,6 +18,10 @@ public class ExpoEmojiKeyboardModule: Module {
         Prop("textSize") { (view, size: Double) in
             view.emojiKeyboardView.setTextSize(CGFloat(size))
         }
+        
+        Prop("size") { (view, size: Double) in 
+            view.emojiKeyboardView.setTextFieldSize(size: Int(size))
+        }
     }
   }
 }

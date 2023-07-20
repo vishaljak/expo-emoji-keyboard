@@ -6,6 +6,7 @@ export type Props = {
   value: string;
   placeholder?: string;
   textSize?: number;
+  size: number;
   onSelection: (event: { nativeEvent: { value: string } }) => void;
 } & ViewProps;
 

@@ -31,6 +31,10 @@ class EmojiKeyboardView: UIView, EmojiTextFieldDelegate {
     func setTextSize(_ size: CGFloat) {
         self.textField.font = UIFont.systemFont(ofSize: size)
     }
+
+    func setTextFieldSize(size: Int) {
+        setupTextFieldConstraints(width: size/2, height: size/2)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true) // dismiss keyboard on touch outside the text field
