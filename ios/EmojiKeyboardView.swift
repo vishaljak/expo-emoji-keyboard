@@ -48,7 +48,7 @@ class EmojiKeyboardView: UIView, EmojiTextFieldDelegate {
         super.init(frame: frame)
         self.addSubview(textField)
         
-        setupTextFieldConstraints(width: 40, height: 40)
+        // setupTextFieldConstraints(width: 40, height: 40)
         
         self.textField.emojiDelegate = self
     }
