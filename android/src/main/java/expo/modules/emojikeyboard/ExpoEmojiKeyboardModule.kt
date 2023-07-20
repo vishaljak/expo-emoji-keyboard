@@ -39,7 +39,7 @@ class ExpoEmojiKeyboardModule : Module() {
     // the view definition: Prop, Events.
     View(ExpoEmojiKeyboardView::class) {
       // Defines a setter for the `name` prop.
-      Prop("name") { view: ExpoEmojiKeyboardView, prop: String ->
+      Prop("name") { _: ExpoEmojiKeyboardView, prop: String ->
         println(prop)
       }
     }

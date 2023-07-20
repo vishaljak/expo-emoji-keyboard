@@ -59,6 +59,7 @@ afterEvaluate {
 }
 
 android {
+  namespace = "expo.modules.emojikeyboard"
   compileSdkVersion safeExtGet("compileSdkVersion", 31)
 
   compileOptions {
