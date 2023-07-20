@@ -101,7 +101,7 @@ class EmojiTextField: UITextField {
                     }
         }
 
-        if let dismissKeyboard = sender.text, text.count > 0 {
+        if let dismissKeyboard = sender.text, dismissKeyboard.count > 0 {
             self.endEditing(true)    
         }
         

@@ -15,8 +15,8 @@ public class ExpoEmojiKeyboardModule: Module {
             view.emojiKeyboardView.setValue(value)
         }
 
-        Prop("textSize") { (view, size: CGFloat) in
-            view.emojiKeyboardView.setTextSize(size)
+        Prop("textSize") { (view, size: NSNumber) in
+            view.emojiKeyboardView.setTextSize(CGFloat(size.floatValue))
         }
     }
   }
