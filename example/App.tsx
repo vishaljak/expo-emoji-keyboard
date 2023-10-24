@@ -21,6 +21,7 @@ const Card = ({ count }: { count: number }) => {
           textSize={17}
           onSelection={(e) => setEmoji(e.nativeEvent.value)}
           style={{ width: 45, height: 45 }}
+          size={100}
         />
         <Text style={{ fontSize: 16 }}>
           Title {count} {emoji}
