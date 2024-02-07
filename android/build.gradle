@@ -61,7 +61,7 @@ afterEvaluate {
 android {
   compileSdkVersion safeExtGet("compileSdkVersion", 33)
 
-  def dgpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
+  def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
   if (agpVersion.tokenize('.')[0].toInteger() < 8) {
     compileOptions {
       sourceCompatibility JavaVersion.VERSION_11
